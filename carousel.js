@@ -1,19 +1,46 @@
-var images = [
-    "/udata/DErqVR5q0Pv/longexposurewaterfall1.jpg",
-    "/udata/MLE2D8Lzv6X/route66.jpg",
-    "/udata/nPaBd6Mq1Ly/archesdrive.jpg",
-    "/udata/1krmXeav6GB/army2.jpg",
-    "/udata/1klaZD0vxjz/redwoodupwards2.jpg",
-    "/udata/4WQvGrR56Qq/solduc2.jpg",
-    "/udata/1koZJB2vq8k/truck4scale.jpg"
+// Get element node
+let image = document.querySelector('.images');
+let rightArrow = document.querySelector('#right-arrow');
+let leftArrow = document.querySelector('#left-arrow');
+
+
+//Array of images
+let images = [
+    "images/Screenshot_3.png",
+    "images/Screenshot_7.png",
+    "images/Screenshot_8.png",
+    "images/Screenshot_9.png",
+    "images/Screenshot_10.png",
+    "images/Screenshot_11.png",
+    "images/Screenshot_12.png"
   ];
+
+  let currentIndex = 0;
   
-  var currentIndex = 0; 
-  
-  var incrementIndex = function(){
-    //write your code here
-    for (let i = 0; i <= images.length; i++) {
-      if (currentIndex == images.length - 1) {return currentIndex = 0};
-      return currentIndex++;
+  //Function to increment
+  let incrementIndex = function() {
+    for (let i = 1; i < images.length; i++) {
+      currentIndex++;
+      if (currentIndex == images.length -1) {currentIndex = 0; return images[currentIndex]}
+      else{ return images[currentIndex]};
     }
   }
+
+   //Function to decrement
+   let decrementIndex = function() {
+    for (let i = 1; i < images.length; i++) {
+      currentIndex--;
+      if (currentIndex == images.length -1) {currentIndex = 0; console.log(images[currentIndex])}
+      else{ return images[currentIndex]};
+    }
+  }
+
+  //Event listener on the rigth-arrow
+  rightArrow.onclick = function() {
+   image.setAttribute('src' , incrementIndex()); 
+  }
+
+  //Event listener on the left-arrow
+  leftArrow.onclick = function() {
+    image.setAttribute('src' , decrementIndex()); 
+   }
